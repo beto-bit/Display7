@@ -2,7 +2,7 @@
  This Arduino library provides an easy displaying of numbers (HEX) and pretty much anything. It supports common anode displays and common cathode ones.
 
 # 🎈 Porpouse
-I needed a library for displaying numbers into a 7 segment display, and no I have it. I hope it helps.
+I needed a library for displaying numbers into a 7 segment display, and now I have it. I hope it helps.
 
 # ⚙ Usage
 For binding a Display, you must create an instance of `Display7` class. Like this.
