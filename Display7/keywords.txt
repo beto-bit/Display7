@@ -1,6 +1,6 @@
 Display7		KEYWORD1
-displayNumber	KEYWORD2
-displayTime		KEYWORD2
-displayCustom	KEYWORD2
-displayTest		KEYWORD2
-clearDisplay	KEYWORD2
+number      	KEYWORD2
+showAndHide		KEYWORD2
+custom      	KEYWORD2
+test    		KEYWORD2
+clear       	KEYWORD2
