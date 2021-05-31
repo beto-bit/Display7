@@ -7,47 +7,51 @@ I needed a library for displaying numbers into a 7 segment display, and now I ha
 # ⚙ Usage
 For binding a Display, you must create an instance of `Display7` class. Like this.
 ```c++
-// Declare the pins you will use.
-int pins[7] = {7, 8, 9, 10, 11, 12, 13};
+// Create the Display object
+Display7 myDisplay(7, 8, 9, 10, 11, 12, 13);
 
-// Create the instance.
+// Or create it using an Array.
+int pins[7] = {7, 8, 9, 10, 11, 12, 13};
 Display7 myDisplay(pins);
 ```
-If you want to use a common anode display, put this. Don't change anything else.
+If you want to use a common anode display, put this, you can do it by changing the `commonAnode` property.
 ```c++
-Display7 myDisplay(pins, true);
+myDisplay.commonAnode = true;
 ```
 
-* `displayNumber()`: 
+* `number()`: 
 It displays a given number. Supports number up to 15 (displays numbers in traditional 7 segment display HEX).
 ```c++
-myDisplay.displayNumber(6);
+myDisplay.number(6);
 ```
 
-* `displayTime()`:
+* `showAndHide()`:
 Displays a number for a given time. Then it turns off. 
 ```c++
-myDisplay.displayTime(2, 2600);
+myDisplay.showAndHide(2, 2600);
 ```
 
-* `displayCustom()`:
-You feed it with a list containin the states of the segments, either it is a common anode display or an common cathode one. It works the same way.
+* `custom()`:
+You feed it with the states of the segments, either it is a common anode display or an common cathode one. It works the same way.
 ```c++
-int mySegments[7] = {0, 1, 1, 0, 1, 1, 1};
-myDisplay.displayCustom(mySegments);
 // It displays an "H".
+myDisplay.custom(0, 1, 1, 0, 1, 1, 1);
+
+// Using an array
+int mySegments[7] = {0, 1, 1, 0, 1, 1, 1};
+myDisplay.custom(mySegments);
 ```
 
-* `displayTest()`:
+* `test()`:
 It displays a sequence of numbers to test the display.
 ```c++
-myDisplay.displayTest();
+myDisplay.test();
 ```
 
-* `clearDisplay()`:
+* `clear()`:
 Well, it clears the display.
 ```c++
-myDisplay.clearDisplay();
+myDisplay.clear();
 ```
 
 # 🎉 It Works 🎉
