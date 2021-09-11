@@ -1,9 +1,8 @@
 /**************************************************************************/
 /*!
   @file     Display7.h
-  Esto no tiene licencia aún, de hecho, es un proyecto bastante experimental
-  
-  Por favor siéntete libre de distribuirla y mejorarla.
+  Simple, easy to use 7-Segment Display Library.
+  Use it as you want :).
 */
 /**************************************************************************/
 
@@ -44,13 +43,17 @@ public:
     int pins[7];
     bool commonAnode;
 
-    // Métodos para un display conectado a un bus de datos de 7 líneas.
+    // Constructors
     Display7(int a, int b, int c, int d, int e, int f, int g);
     Display7(int pins[], bool commonAnode = false);
+
+    // Methods
     void number(int num);
     void showAndHide(int num, int tim);
+
     void custom(int a, int b, int c, int d, int e, int f, int g);
     void custom(int displaySet[]);
+    
     void test();
     void clear();
     

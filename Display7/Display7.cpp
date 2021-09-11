@@ -2,44 +2,42 @@
 #include "Display7.h"
 
 /**
- * Construtor que recibe los números de pines a utilizar para el control del
- * Display.
+ * Receives the pins to use.
  */
 Display7::Display7(int a, int b, int c, int d, int e, int f, int g) 
 {
-    int Ipins[a, b, c, d, e, f, g];
+    int _pins[7] = {a, b, c, d, e, f, g};
 
     for (int i = 0; i < 7; i++) {
-        this -> pins[i] = Ipins[i];
+        this -> pins[i] = _pins[i];
         pinMode(pins[i], OUTPUT);
     }
 }
 
 /**
- * Constructor que recibe un array de enteros y un segundo argumento 
- * opcional que indica si se está usando un Display de ánodo común.
+ * Receives an array of integers, and a second optional argument for
+ * handling Common Anode Displays.
  */
-Display7::Display7(int Ipins[], bool IcommonAnode)
+Display7::Display7(int _pins[], bool _commonAnode=false)
 {
-    this -> commonAnode = IcommonAnode;
+    this -> commonAnode = _commonAnode;
 
     for (int i = 0; i < 7; i++) {
-        this -> pins[i] = Ipins[i];
+        this -> pins[i] = _pins[i];
         pinMode(pins[i], OUTPUT);
     }
 }
 
 
 /**
- * Muestra un número del 0 al 15 (HEX). 
+ * Show a number between 0 to 15 (HEX).
  */
 void Display7::number(int num) {
     displayRaw(NUMS[num]);
 }
 
 /**
- * Muestra un número durante una cantidad de tiempo dada y luego apaga el
- * Display.
+ * Shows a number for a given amount of time, then clears the Display.
  */
 void Display7::showAndHide(int num, int tim) {
     displayRaw(NUMS[num]);
@@ -48,15 +46,14 @@ void Display7::showAndHide(int num, int tim) {
 }
 
 /**
- * Recibe los estados como argumentos separados. Muestra un caracter
- * personalizado.
+ * Receives the states of the Display as separate arguments.
  */
 void Display7::custom(int a, int b, int c, int d, int e, int f, int g) {
     displayRaw(a, b, c, d, e, f, g);
 }
 
 /**
- * Recibe un Array de int. Muestra un caracter personalizado.
+ * Receives the state of the Display as an array.
  */
 void Display7::custom(int displaySet[]) {
     displayRaw(displaySet);
@@ -64,7 +61,7 @@ void Display7::custom(int displaySet[]) {
 
 
 /**
- * Ejecuta un programa de prueba. Muestra los números del 0 al 15 (HEX).
+ * Executes a test, showing numbers from 0 to 15.
  */
 void Display7::test() {
     for (int i = 0; i < 16; i++) {
@@ -74,29 +71,23 @@ void Display7::test() {
 }
 
 /**
- * Limpia el Display.
+ * It clears the Display.
  */
 void Display7::clear() {
     displayRaw(0, 0, 0, 0, 0, 0, 0);
 }
 
-/**
- * Muestra un caracter personalizado en el Display, a partir de los estados
- * por separado.
- */
+// Utility functions to turn on/off individual segments of the display.
+
 void Display7::displayRaw(int a, int b, int c, int d, int e, int f, int g) {
     int states[7] = {a, b, c, d, e, f, g};
     displayRaw(states);
 }
 
-/**
- * Muestra en el Display los datos dados a partir de un array de int.
- */
 void Display7::displayRaw(int states[]) {
-    for (int i = 0; i < 7; i++) {
-        int stat;
-        if (commonAnode) stat = (states[i] == 1) ? LOW : HIGH;
-        else stat = (states[i] == 1) ? HIGH : LOW; 
+    for (int i = 0; i < 7; i++)
+    {
+        int stat = (commonAnode) ? !states[i] : states[i];
         digitalWrite(pins[i], stat);
     }
 }
