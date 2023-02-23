@@ -1,7 +1,7 @@
 # 🕹 Arduino 7 Segment Display
- This Arduino library provides an easy displaying of numbers (HEX) and pretty much anything. It supports common anode displays and common cathode ones.
+ This Arduino library provides an easy way of displaying of numbers (HEX) and pretty much anything. It supports common anode displays and common cathode ones.
 
-# 🎈 Porpouse
+# 🎈 Porpose
 I needed a library for displaying numbers into a 7 segment display, and now I have it. I hope it helps.
 
 # ⚙ Usage
@@ -14,7 +14,7 @@ Display7 myDisplay(7, 8, 9, 10, 11, 12, 13);
 int pins[7] = {7, 8, 9, 10, 11, 12, 13};
 Display7 myDisplay(pins);
 ```
-If you want to use a common anode display, put this, you can do it by changing the `commonAnode` property.
+If you want to use a common anode display, you can do it by changing the `commonAnode` property.
 ```c++
 myDisplay.commonAnode = true;
 ```
@@ -26,7 +26,7 @@ myDisplay.number(6);
 ```
 
 * `showAndHide()`:
-Displays a number for a given time. Then it turns off. 
+Displays a number for a given time, then it turns off. 
 ```c++
 myDisplay.showAndHide(2, 2600);
 ```
